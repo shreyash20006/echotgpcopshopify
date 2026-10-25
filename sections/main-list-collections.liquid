@@ -1,0 +1,17 @@
+<section class="sec">
+  <div class="wrap">
+    <h1 class="sh">All <em>collections</em></h1>
+    <div class="eds">
+      {%- for c in collections -%}
+        <a class="ed" href="{{ c.url }}">
+          {%- assign img = c.image | default: c.products.first.featured_image -%}
+          <div class="edim">{%- if img != blank -%}{{ img | image_url: width: 400 | image_tag: loading: 'lazy', alt: c.title }}{%- else -%}<span class="noimg">ECHO</span>{%- endif -%}</div>
+          <b>{{ c.title }}</b><small>{{ c.products_count }} items</small>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Collection list", "settings": [] }
+{% endschema %}

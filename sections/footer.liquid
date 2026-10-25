@@ -1,0 +1,20 @@
+{%- capture logo_url %}{% render 'logo-url' %}{% endcapture -%}
+<footer class="footer">
+  <div>
+    <b>{{ shop.name }}</b><br>
+    {{ section.settings.text }}<br>
+    <a href="mailto:{{ settings.email }}">{{ settings.email }}</a>
+    <p class="handles">
+      <a href="https://instagram.com/{{ settings.ig_echo }}">@{{ settings.ig_echo }}</a> ×
+      <a href="https://instagram.com/{{ settings.ig_council }}">@{{ settings.ig_council }}</a> ×
+      <a href="https://instagram.com/{{ settings.ig_nss }}">@{{ settings.ig_nss }}</a>
+    </p>
+    <nav class="footer__nav">{%- for link in section.settings.menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}</nav>
+  </div>
+  <img src="{{ logo_url }}" alt="{{ shop.name }}" height="70" width="80" loading="lazy">
+</footer>
+{% schema %}
+{ "name": "Footer", "settings": [
+  { "type": "text", "id": "text", "label": "Text", "default": "Personalised items can’t be returned or exchanged." },
+  { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" } ] }
+{% endschema %}

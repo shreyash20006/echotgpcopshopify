@@ -1,0 +1,46 @@
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="sec">
+  <div class="wrap">
+    <div class="pd">
+      <div class="gal">
+        <div class="big">{%- if product.featured_image -%}{{ product.featured_image | image_url: width: 1000 | image_tag: alt: product.title, id: 'bigimg', widths: '500, 750, 1000' }}{%- else -%}<span class="noimg">ECHO</span>{%- endif -%}</div>
+        {%- if product.images.size > 1 -%}
+          <div class="thumbs">
+            {%- for image in product.images -%}
+              <button type="button" data-full="{{ image | image_url: width: 1000 }}" class="{% if forloop.first %}on{% endif %}" aria-label="Photo {{ forloop.index }}">{{ image | image_url: width: 120 | image_tag: alt: '', loading: 'lazy' }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="info">
+        {%- if product.type != blank -%}<span class="pill">{{ product.type }}</span>{%- endif -%}
+        <h1>{{ product.title }}</h1>
+        <div class="pr">{{ current.price | money_without_trailing_zeros }}</div>
+        {%- if section.settings.note != blank -%}<small>{{ section.settings.note }}</small>{%- endif -%}
+        {%- form 'product', product, class: 'pform' -%}
+          {%- unless product.has_only_default_variant -%}
+            <label>{{ product.options.first | default: 'Size' }}</label>
+            <div class="sizes">
+              {%- for variant in product.variants -%}
+                <label class="sz"><input type="radio" name="id" value="{{ variant.id }}" {% if variant.id == current.id %}checked{% endif %} {% unless variant.available %}disabled{% endunless %} required><span>{{ variant.title }}</span></label>
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <input type="hidden" name="id" value="{{ current.id }}">
+          {%- endunless -%}
+          {%- if product.tags contains 'personalised' -%}
+            <label for="nm">Name to print (max 14 letters)</label>
+            <input id="nm" type="text" name="properties[Name to print]" maxlength="14" required autocomplete="off" placeholder="YOUR NAME" data-name>
+            <small>Printed exactly as typed. Personalised items can’t be returned or exchanged.</small>
+          {%- endif -%}
+          <button type="submit" name="add" class="btn wide" {% unless product.available %}disabled{% endunless %}>{% if product.available %}Pre-order now{% else %}Sold out{% endif %}</button>
+        {%- endform -%}
+        <div class="desc">{{ product.description }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Product", "settings": [
+  { "type": "text", "id": "note", "label": "Note under price", "default": "Pre-order · Campus handover, no courier charge" } ] }
+{% endschema %}

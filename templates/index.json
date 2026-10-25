@@ -1,0 +1,159 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-shatter",
+      "settings": {
+        "heading": "Merch Drop",
+        "accent": "Drop 01",
+        "text": "Your name on every piece. Official Echo.TGPCOP, Council and NSS merch.",
+        "button_label": "Pre-order now",
+        "button_link": "#drop"
+      }
+    },
+    "drop": {
+      "type": "drop-status",
+      "settings": {
+        "heading": "Drop 01",
+        "accent": "is live",
+        "deadline": "2026-11-07T23:59:59+05:30",
+        "moq": 50,
+        "pieces": 0
+      }
+    },
+    "editions": {
+      "type": "editions",
+      "settings": {
+        "heading": "Shop by",
+        "accent": "edition"
+      },
+      "blocks": {
+        "e1": {
+          "type": "edition",
+          "settings": {
+            "collection": "council-edition"
+          }
+        },
+        "e2": {
+          "type": "edition",
+          "settings": {
+            "collection": "nss-edition"
+          }
+        },
+        "e3": {
+          "type": "edition",
+          "settings": {
+            "collection": "media-team"
+          }
+        },
+        "e4": {
+          "type": "edition",
+          "settings": {
+            "collection": "students"
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ]
+    },
+    "shop": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Shop",
+        "accent": "all",
+        "collection": "all",
+        "limit": 8
+      },
+      "blocks": {
+        "c1": {
+          "type": "chip",
+          "settings": {
+            "collection": "hoodies"
+          }
+        },
+        "c2": {
+          "type": "chip",
+          "settings": {
+            "collection": "t-shirts"
+          }
+        },
+        "c3": {
+          "type": "chip",
+          "settings": {
+            "collection": "sweatshirts"
+          }
+        },
+        "c4": {
+          "type": "chip",
+          "settings": {
+            "collection": "accessories"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "how": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "How it",
+        "accent": "works"
+      },
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "1. Pay now",
+            "text": "Your pre-order is locked once payment succeeds."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "2. Target reached",
+            "text": "We place the bulk order only after the target is met."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "3. Campus handover",
+            "text": "Collect your piece at the college. No courier fee."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "4. Safe refund",
+            "text": "Target missed? Deadline extended, smaller batch or full refund."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "collab": {
+      "type": "echo-collab",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "drop",
+    "editions",
+    "shop",
+    "how",
+    "collab"
+  ]
+}

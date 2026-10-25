@@ -1,0 +1,21 @@
+{%- capture logo_url %}{% render 'logo-url' %}{% endcapture -%}
+<div class="shatter" data-shatter data-logo="{{ logo_url | strip }}">
+  <div class="stage">
+    <div class="lb" data-lb></div>
+    <div class="stx" data-stx>
+      <h1>{{ section.settings.heading }}<br><em>{{ section.settings.accent }}</em></h1>
+      <p>{{ section.settings.text }}</p>
+      {%- if section.settings.button_label != blank -%}<div><a class="btn" href="{{ section.settings.button_link | default: '#drop' }}">{{ section.settings.button_label }}</a></div>{%- endif -%}
+    </div>
+    <div class="hint" data-hint>Scroll ↓</div>
+  </div>
+</div>
+{% schema %}
+{ "name": "Hero (logo shatter)", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Merch Drop" },
+  { "type": "text", "id": "accent", "label": "Yellow line", "default": "Drop 01" },
+  { "type": "textarea", "id": "text", "label": "Text", "default": "Your name on every piece." },
+  { "type": "text", "id": "button_label", "label": "Button label", "default": "Pre-order now" },
+  { "type": "text", "id": "button_link", "label": "Button link", "default": "#drop" } ],
+  "presets": [ { "name": "Hero (logo shatter)" } ] }
+{% endschema %}

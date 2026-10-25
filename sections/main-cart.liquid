@@ -1,0 +1,30 @@
+<section class="sec">
+  <div class="wrap">
+    <h1 class="sh">Your <em>cart</em></h1>
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="cartf">
+        {%- for item in cart.items -%}
+          <div class="line">
+            <div class="lim">{%- if item.image -%}{{ item.image | image_url: width: 200 | image_tag: alt: item.product.title, loading: 'lazy' }}{%- endif -%}</div>
+            <div class="lt">
+              <a href="{{ item.url }}"><b>{{ item.product.title }}</b></a>
+              {%- unless item.product.has_only_default_variant -%}<small>{{ item.variant.title }}</small>{%- endunless -%}
+              {%- for p in item.properties -%}{%- if p.last != blank -%}<small>{{ p.first }}: <b>{{ p.last }}</b></small>{%- endif -%}{%- endfor -%}
+              <a class="rm" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0">Remove</a>
+            </div>
+            <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity">
+            <div class="lp">{{ item.final_line_price | money_without_trailing_zeros }}</div>
+          </div>
+        {%- endfor -%}
+        <div class="sum"><span>Total</span><b>{{ cart.total_price | money_without_trailing_zeros }}</b></div>
+        <small>Pre-order: pay now, collect at campus after the drop is confirmed.</small>
+        <div class="acts"><button type="submit" name="update" class="btn o">Update cart</button><button type="submit" name="checkout" class="btn">Checkout</button></div>
+      </form>
+    {%- else -%}
+      <p>Your cart is empty.</p><a class="btn" href="{{ routes.all_products_collection_url }}">Shop the drop</a>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

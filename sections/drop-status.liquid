@@ -1,0 +1,27 @@
+{%- assign moq = section.settings.moq | default: 50 -%}
+{%- assign pieces = section.settings.pieces | default: 0 -%}
+{%- assign more = moq | minus: pieces -%}
+{%- assign pct = 0 -%}
+{%- if moq > 0 -%}{%- assign pct = pieces | times: 100 | divided_by: moq -%}{%- endif -%}
+{%- if pct > 100 -%}{%- assign pct = 100 -%}{%- endif -%}
+<section id="drop" class="sec" style="text-align:center">
+  <div class="wrap">
+    <h2 class="sh">{{ section.settings.heading }} <em>{{ section.settings.accent }}</em></h2>
+    <div class="cd" data-countdown="{{ section.settings.deadline }}"></div>
+    <div class="moq rv">
+      <small class="k">Drop confirms at</small>
+      <b><span data-counter="{{ pieces }}">{{ pieces }}</span> / {{ moq }} pieces</b>
+      <div class="bar"><i data-fill="{{ pct }}" style="width:0"></i></div>
+      <small>{% if more > 0 %}{{ more }} more pieces to confirm the drop{% else %}Target reached. The drop is confirmed!{% endif %}</small>
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Drop status", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Drop 01" },
+  { "type": "text", "id": "accent", "label": "Yellow word", "default": "is live" },
+  { "type": "text", "id": "deadline", "label": "Pre-order closes (ISO date)", "default": "2026-11-07T23:59:59+05:30", "info": "Format: 2026-11-07T23:59:59+05:30" },
+  { "type": "number", "id": "moq", "label": "Target pieces (MOQ)", "default": 50 },
+  { "type": "number", "id": "pieces", "label": "Pieces ordered so far", "default": 0, "info": "Update this number from your Shopify orders." } ],
+  "presets": [ { "name": "Drop status" } ] }
+{% endschema %}

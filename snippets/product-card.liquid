@@ -1,0 +1,13 @@
+{%- comment -%} Usage: {% render 'product-card', card_product: product %} {%- endcomment -%}
+<a class="card" href="{{ card_product.url }}">
+  <div class="im">
+    {%- if card_product.tags contains 'bestseller' -%}<span class="tag">Bestseller</span>{%- elsif card_product.tags contains 'new' -%}<span class="tag">New</span>{%- endif -%}
+    {%- if card_product.featured_image -%}{{ card_product.featured_image | image_url: width: 640 | image_tag: loading: 'lazy', alt: card_product.title, widths: '320, 480, 640' }}{%- else -%}<span class="noimg">ECHO</span>{%- endif -%}
+  </div>
+  <div class="b">
+    {%- if card_product.type != blank -%}<span class="pill">{{ card_product.type }}</span>{%- endif -%}
+    <h3>{{ card_product.title }}</h3>
+    <div class="pr">{%- if card_product.price_varies -%}From {% endif -%}{{ card_product.price | money_without_trailing_zeros }}</div>
+    <span class="btn sm">{% if card_product.available %}View{% else %}Sold out{% endif %}</span>
+  </div>
+</a>

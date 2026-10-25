@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="{{ settings.color_blue }}">
+  <title>{{ page_title }}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>:root{--blue:{{ settings.color_blue }};--yellow:{{ settings.color_yellow }};--ink:{{ settings.color_ink }}}</style>
+  {{ 'echo.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body class="tpl-{{ template.name }}">
+  <a class="skip" href="#main">Skip to content</a>
+  {% section 'echo-ticker' %}
+  <div class="hdr">{% section 'header' %}</div>
+  <main id="main">{{ content_for_layout }}</main>
+  {% section 'footer' %}
+  <script src="{{ 'echo.js' | asset_url }}" defer></script>
+</body>
+</html>

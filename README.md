@@ -1,33 +1,25 @@
-# Echo.TGPCOP Shopify pack (Dawn theme)
+# Echo Merch (Shopify theme)
 
-## 1. Theme + colours
-Online Store -> Themes -> Add theme -> Dawn (free). Customize -> Theme settings -> Colors -> Scheme 1:
-Background #004BFE, Text #FFFFFF, Button #FFD60A, Button label #004BFE, Outline #FFFFFF.
-Dark ink for shadows/cards: #08145A.
+Complete Online Store 2.0 theme for the Echo.TGPCOP merch drop. The folders `layout`, `sections`, `templates`,
+`config`, `locales`, `snippets` and `assets` are at the ROOT of this repo, which is what Shopify needs.
 
-## 2. Upload the pack (Online Store -> Themes -> ... -> Edit code)
-- assets/echo-custom.css  -> Assets -> Add a new asset
-- snippets/echo-name-field.liquid -> Snippets -> Add a new snippet
-- sections/echo-ticker.liquid, sections/echo-collab.liquid -> Sections -> Add a new section
-In layout/theme.liquid, just before </head> paste:
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  {{ 'echo-custom.css' | asset_url | stylesheet_tag }}
+## Connect with GitHub
+1. Put ALL files of this folder in the ROOT of your repo (`echotgpcopshopify`, branch `main`). Not inside a sub-folder.
+2. Shopify -> Online Store -> Themes -> Add theme -> Connect from GitHub -> pick the repo and `main`.
+Or without GitHub: zip this folder's contents and use Add theme -> Upload zip file.
 
-## 3. Name-to-print field (no app)
-Open sections/main-product.liquid, find the `{%- when 'buy_buttons' -%}` block and add this line
-ABOVE the render of 'buy-buttons':
-  {% render 'echo-name-field', product_form_id: product_form_id %}
-Test: add to cart -> the name must show under the item in cart and in the order.
+## After it is connected
+1. **Collections** (Products -> Collections). Create these handles:
+   - By edition: `council-edition`, `nss-edition`, `media-team`, `students`
+   - By category: `hoodies`, `t-shirts`, `sweatshirts`, `accessories`
+   (Tip: make them "Automated" using Product type or Product tag.)
+2. **Products**: set Type to the edition name (e.g. "NSS Edition"), add variants S, M, L, XL, XXL.
+   Tags: `personalised` (shows the required "Name to print" box), `bestseller`, `new` (shows a badge).
+   Inventory: tick "Continue selling when out of stock" so it behaves as a pre-order.
+3. **Menus** (Content -> Menus): `main-menu` (header) and `footer`.
+4. **Customize** the theme: Drop status section -> set closing date, target pieces (MOQ) and "Pieces ordered so far"
+   (update it from your orders). Theme settings -> upload logos / change colours if needed.
+5. **Payments**: Settings -> Payments (India needs a third-party gateway such as Cashfree or Razorpay).
+6. **Subdomain**: Settings -> Domains -> connect `shop.echotgpcopmedia.site`, then add DNS CNAME `shop` -> `shops.myshopify.com`.
 
-## 4. Add sections in the theme editor
-Home page -> Add section -> "Echo ticker" (top) and "Echo collaboration" (upload logos from /logos).
-
-## 5. Pre-order setup
-Products -> Inventory: tick "Continue selling when out of stock" (so it behaves like a pre-order). Put the
-deadline + "bulk order only after the target is reached" text in the description and on a "How it works" page.
-Policies: personalised items = no return/exchange.
-
-## 6. Subdomain (shop.echotgpcopmedia.site)
-Settings -> Domains -> Connect existing domain -> enter the subdomain. At the place where your domain's DNS is
-managed (registrar OR Vercel if Vercel holds the DNS) add:  CNAME  shop  ->  shops.myshopify.com
-Your main site on Vercel is not affected. DNS can take up to a few hours.
+Name-to-print is saved as a line-item property and appears in the cart, order and emails.

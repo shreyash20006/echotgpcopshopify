@@ -1,0 +1,15 @@
+{%- paginate collection.products by section.settings.per_page -%}
+<section class="sec">
+  <div class="wrap">
+    <h1 class="sh">{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<div class="desc" style="margin-bottom:22px">{{ collection.description }}</div>{%- endif -%}
+    <div class="grid">
+      {%- for product in collection.products -%}{% render 'product-card', card_product: product %}{%- else -%}<p>No products here yet. Check back soon!</p>{%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}<div class="pager">{{ paginate | default_pagination }}</div>{%- endif -%}
+  </div>
+</section>
+{%- endpaginate -%}
+{% schema %}
+{ "name": "Collection", "settings": [ { "type": "range", "id": "per_page", "min": 4, "max": 24, "step": 4, "label": "Products per page", "default": 12 } ] }
+{% endschema %}

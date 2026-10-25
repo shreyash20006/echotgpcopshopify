@@ -1,0 +1,11 @@
+{%- capture logo_url %}{% render 'logo-url' %}{% endcapture -%}
+<header class="header">
+  <a href="{{ routes.root_url }}" class="header__logo"><img src="{{ logo_url }}" alt="{{ shop.name }}" height="46" width="52"></a>
+  <nav class="header__nav" aria-label="Main">
+    {%- for link in section.settings.menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+  </nav>
+  <a class="cart" href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+</header>
+{% schema %}
+{ "name": "Header", "settings": [ { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" } ] }
+{% endschema %}
