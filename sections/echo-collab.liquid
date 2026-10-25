@@ -1,0 +1,22 @@
+<section class="echo-collab">
+  <div class="echo-collab__k">{{ section.settings.kicker }}</div>
+  <div class="echo-collab__row">
+    {%- if section.settings.council != blank -%}{{ section.settings.council | image_url: width: 400 | image_tag: alt: 'TGPCOP Students Council' }}{%- endif -%}
+    <div class="echo-collab__x">×</div>
+    {%- if section.settings.echo != blank -%}{{ section.settings.echo | image_url: width: 400 | image_tag: alt: 'Echo.TGPCOP Media', class: 'dark' }}{%- endif -%}
+    <div class="echo-collab__x">×</div>
+    {%- if section.settings.nss != blank -%}{{ section.settings.nss | image_url: width: 400 | image_tag: alt: 'NSS TGPCOP' }}{%- endif -%}
+  </div>
+  <div class="echo-collab__t">LEAD • LEARN <em>CAPTURE</em></div>
+  <div class="echo-collab__h">
+    <a href="https://instagram.com/tgpcop.council">@tgpcop.council</a>×<a href="https://instagram.com/echo.tgpcop">@echo.tgpcop</a>×<a href="https://www.instagram.com/nss_tgpcop/">@nss_tgpcop</a>
+  </div>
+</section>
+{% schema %}
+{ "name": "Echo collaboration", "settings": [
+  { "type": "text", "id": "kicker", "label": "Heading", "default": "IN COLLABORATION" },
+  { "type": "image_picker", "id": "council", "label": "Council logo" },
+  { "type": "image_picker", "id": "echo", "label": "Echo logo" },
+  { "type": "image_picker", "id": "nss", "label": "NSS logo" } ],
+  "presets": [ { "name": "Echo collaboration" } ] }
+{% endschema %}

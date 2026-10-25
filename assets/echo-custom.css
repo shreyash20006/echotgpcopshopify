@@ -1,0 +1,27 @@
+/* ECHO.TGPCOP brand layer for Shopify Dawn. Upload to Assets, then link it in theme.liquid (see README). */
+:root{--echo-blue:#004BFE;--echo-yellow:#FFD60A;--echo-ink:#08145A;--echo-white:#FFFFFF}
+body{font-family:'Poppins',Assistant,sans-serif;font-weight:500;
+ background-image:radial-gradient(rgba(255,255,255,.16) 1.5px,transparent 1.5px);background-size:28px 28px}
+h1,h2,h3,.h0,.h1,.h2,.h3,.card__heading,.product__title{font-family:'Bebas Neue','Poppins',sans-serif;text-transform:uppercase;letter-spacing:.02em;font-weight:400}
+.h0,h1,.h1{font-size:clamp(3.2rem,8vw,7rem);line-height:1}
+.button,.shopify-challenge__button,.customer button{border-radius:99px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.button:not(.button--secondary):not(.button--tertiary){--color-button:255,214,10;--color-button-text:0,75,254}
+.card-wrapper .card{border-radius:22px;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 24px rgba(0,20,90,.3)}
+.price-item--regular,.price-item--sale{font-family:'Bebas Neue',sans-serif;font-size:1.8em;color:var(--echo-yellow)}
+.echo-name{margin:0 0 1.6rem}
+.echo-name label{display:block;font-weight:700;margin-bottom:.6rem}
+.echo-name input{width:100%;padding:1.2rem 1.6rem;border:3px solid #fff;border-radius:99px;background:var(--echo-ink);color:#fff;font:700 1.6rem Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.echo-name small{display:block;margin-top:.6rem;opacity:.85}
+.echo-ticker{background:#fff;color:var(--echo-blue);overflow:hidden;white-space:nowrap;font-weight:700;padding:1rem 0}
+.echo-ticker__in{display:inline-block;animation:echo-tick 28s linear infinite}
+.echo-ticker__in span{margin:0 2.4rem}
+@keyframes echo-tick{to{transform:translateX(-50%)}}
+.echo-collab{text-align:center;padding:5rem 1.5rem}
+.echo-collab__k{color:var(--echo-yellow);font:400 clamp(2rem,4vw,3rem) 'Bebas Neue',sans-serif;letter-spacing:.1em}
+.echo-collab__row{display:flex;align-items:center;justify-content:center;gap:clamp(.4rem,2vw,2.4rem);margin:2.4rem 0}
+.echo-collab__row img{width:clamp(62px,16vw,170px);aspect-ratio:1;border-radius:50%;object-fit:cover;background:#fff;border:5px solid #fff;box-shadow:0 14px 30px rgba(0,20,90,.45)}
+.echo-collab__row img.dark{background:var(--echo-blue)}
+.echo-collab__x{width:clamp(32px,8vw,76px);aspect-ratio:1;border-radius:50%;border:5px solid var(--echo-yellow);color:var(--echo-yellow);display:grid;place-items:center;font:700 clamp(1rem,3vw,2.4rem) Poppins}
+.echo-collab__t{font:400 clamp(3rem,8vw,6rem)/1 'Bebas Neue',sans-serif}.echo-collab__t em{font-style:normal;color:var(--echo-yellow)}
+.echo-collab__h{margin-top:2rem;font-weight:700}.echo-collab__h a{color:#fff;margin:0 .6rem}
+@media(prefers-reduced-motion:reduce){.echo-ticker__in{animation:none}}
