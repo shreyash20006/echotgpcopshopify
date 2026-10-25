@@ -1,4 +1,5 @@
 /* Echo Merch theme: ECHO.TGPCOP brand */
+:root{--blue:#004BFE;--yellow:#FFD60A;--ink:#08145A}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;background:var(--blue) radial-gradient(rgba(255,255,255,.16) 1.5px,transparent 1.5px) 0 0/28px 28px;color:#fff;font:500 16px/1.55 Poppins,system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0)}
 a{color:inherit}img{max-width:100%;height:auto;display:block}

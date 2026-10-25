@@ -11,9 +11,9 @@
     </div>
     <div class="big2">Lead • Learn <em>Capture</em></div>
     <p class="handles">
-      <a href="https://instagram.com/{{ settings.ig_council }}">@{{ settings.ig_council }}</a> ×
-      <a href="https://instagram.com/{{ settings.ig_echo }}">@{{ settings.ig_echo }}</a> ×
-      <a href="https://instagram.com/{{ settings.ig_nss }}">@{{ settings.ig_nss }}</a>
+      <a href="https://instagram.com/{{ settings.ig_council | default: 'tgpcop.council' }}">@{{ settings.ig_council | default: 'tgpcop.council' }}</a> ×
+      <a href="https://instagram.com/{{ settings.ig_echo | default: 'echo.tgpcop' }}">@{{ settings.ig_echo | default: 'echo.tgpcop' }}</a> ×
+      <a href="https://instagram.com/{{ settings.ig_nss | default: 'nss_tgpcop' }}">@{{ settings.ig_nss | default: 'nss_tgpcop' }}</a>
     </p>
   </div>
 </section>

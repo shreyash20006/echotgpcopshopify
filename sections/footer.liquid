@@ -3,11 +3,11 @@
   <div>
     <b>{{ shop.name }}</b><br>
     {{ section.settings.text }}<br>
-    <a href="mailto:{{ settings.email }}">{{ settings.email }}</a>
+    <a href="mailto:{{ settings.email | default: 'Media@tgpcop.site' }}">{{ settings.email | default: 'Media@tgpcop.site' }}</a>
     <p class="handles">
-      <a href="https://instagram.com/{{ settings.ig_echo }}">@{{ settings.ig_echo }}</a> ×
-      <a href="https://instagram.com/{{ settings.ig_council }}">@{{ settings.ig_council }}</a> ×
-      <a href="https://instagram.com/{{ settings.ig_nss }}">@{{ settings.ig_nss }}</a>
+      <a href="https://instagram.com/{{ settings.ig_echo | default: 'echo.tgpcop' }}">@{{ settings.ig_echo | default: 'echo.tgpcop' }}</a> ×
+      <a href="https://instagram.com/{{ settings.ig_council | default: 'tgpcop.council' }}">@{{ settings.ig_council | default: 'tgpcop.council' }}</a> ×
+      <a href="https://instagram.com/{{ settings.ig_nss | default: 'nss_tgpcop' }}">@{{ settings.ig_nss | default: 'nss_tgpcop' }}</a>
     </p>
     <nav class="footer__nav">{%- for link in section.settings.menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}</nav>
   </div>

@@ -1,3 +1,11 @@
 {
-  "current": {}
+  "current": {
+    "color_blue": "#004BFE",
+    "color_yellow": "#FFD60A",
+    "color_ink": "#08145A",
+    "ig_council": "tgpcop.council",
+    "ig_echo": "echo.tgpcop",
+    "ig_nss": "nss_tgpcop",
+    "email": "Media@tgpcop.site"
+  }
 }
