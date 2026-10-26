@@ -64,7 +64,7 @@
       "settings": {
         "heading": "Shop",
         "accent": "all",
-        "collection": "all",
+        "collection": "",
         "limit": 8
       },
       "blocks": {

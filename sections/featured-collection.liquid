@@ -1,4 +1,8 @@
 {%- assign col = section.settings.collection -%}
+{%- assign product_list = col.products -%}
+{%- if col == blank or product_list == blank or product_list.size == 0 -%}
+  {%- assign product_list = collections.all.products -%}
+{%- endif -%}
 <section class="sec" id="shop">
   <div class="wrap">
     <h2 class="sh">{{ section.settings.heading }} <em>{{ section.settings.accent }}</em></h2>
@@ -7,11 +11,14 @@
       {%- for block in section.blocks -%}{%- if block.settings.collection != blank -%}<a href="{{ block.settings.collection.url }}" {{ block.shopify_attributes }}>{{ block.settings.collection.title }}</a>{%- endif -%}{%- endfor -%}
     </div>
     <div class="grid">
-      {%- if col != blank -%}
-        {%- for product in col.products limit: section.settings.limit -%}{% render 'product-card', card_product: product %}{%- endfor -%}
+      {%- for product in product_list limit: section.settings.limit -%}
+        {% render 'product-card', card_product: product %}
       {%- else -%}
-        {%- for product in collections.all.products limit: section.settings.limit -%}{% render 'product-card', card_product: product %}{%- endfor -%}
-      {%- endif -%}
+        <div style="grid-column: 1 / -1; text-align: center; padding: 48px 16px; background: rgba(0, 0, 0, 0.15); border-radius: 16px; border: 2px dashed rgba(255, 255, 255, 0.2);">
+          <p style="font-size: 1.25rem; font-weight: 700; margin: 0 0 8px;">No active products visible yet</p>
+          <p style="font-size: 0.95rem; opacity: 0.85; max-width: 500px; margin: 0 auto; line-height: 1.5;">Make sure in Shopify Admin that your product status is <strong>Active</strong> and <strong>Online Store</strong> is selected under Sales Channels.</p>
+        </div>
+      {%- endfor -%}
     </div>
     <p style="text-align:center;margin-top:28px"><a class="btn" href="{{ routes.all_products_collection_url }}">View all products</a></p>
   </div>
